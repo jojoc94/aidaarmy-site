@@ -364,15 +364,14 @@ function submitForm() {
   btn.textContent = 'Submitting...';
 
   // Send to FormSubmit.co (no account needed, sends straight to email)
-  fetch('https://formsubmit.co/ajax/joseph@sparkup-asia.com', {
+  fetch('https://formspree.io/f/xnjykrwa', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
       name: name,
       company: company,
       email: email,
-      phone: code + ' ' + phone,
-      _subject: 'AIDA Early Access Request: ' + name
+      phone: code + ' ' + phone
     })
   })
   .then(response => {
