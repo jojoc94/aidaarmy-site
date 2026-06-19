@@ -299,31 +299,35 @@
       </div>
 
       <div id="the-form">
-        <div class="form-group">
-          <label class="form-label">Full name</label>
-          <input class="form-input" type="text" id="f-name" placeholder="Your name" required>
-        </div>
+        <form action="https://formspree.io/f/xnjykrwa" method="POST">
+          <input type="hidden" name="_next" value="https://aidaarmy.com/thanks.html">
 
-        <div class="form-group">
-          <label class="form-label">Company</label>
-          <input class="form-input" type="text" id="f-company" placeholder="Your company name">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input class="form-input" type="email" id="f-email" placeholder="you@company.com" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Contact number</label>
-          <div class="phone-row">
-            <input class="form-input phone-code" type="text" id="f-code" placeholder="+60" value="+60">
-            <input class="form-input phone-number" type="tel" id="f-phone" placeholder="12 345 6789">
+          <div class="form-group">
+            <label class="form-label">Full name</label>
+            <input class="form-input" type="text" name="name" placeholder="Your name" required>
           </div>
-        </div>
 
-        <button class="form-submit" id="submit-btn" onclick="submitForm()">Submit</button>
-        <div class="form-note">We onboard every team personally. Expect a reply within 24 hours.</div>
+          <div class="form-group">
+            <label class="form-label">Company</label>
+            <input class="form-input" type="text" name="company" placeholder="Your company name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" name="email" placeholder="you@company.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contact number</label>
+            <div class="phone-row">
+              <input class="form-input phone-code" type="text" name="country_code" placeholder="+60" value="+60">
+              <input class="form-input phone-number" type="tel" name="phone" placeholder="12 345 6789">
+            </div>
+          </div>
+
+          <button class="form-submit" type="submit">Submit</button>
+          <div class="form-note">We onboard every team personally. Expect a reply within 24 hours.</div>
+        </form>
       </div>
     </div>
 
@@ -346,53 +350,6 @@
   </div>
 </footer>
 
-<script>
-function submitForm() {
-  const name = document.getElementById('f-name').value.trim();
-  const company = document.getElementById('f-company').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const code = document.getElementById('f-code').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-
-  if (!name || !email) {
-    alert('Please fill in your name and email.');
-    return;
-  }
-
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-
-  // Send to FormSubmit.co (no account needed, sends straight to email)
-  fetch('https://formspree.io/f/xnjykrwa', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name: name,
-      company: company,
-      email: email,
-      phone: code + ' ' + phone
-    })
-  })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById('form-area').classList.add('hidden');
-      document.getElementById('thank-you').classList.add('show');
-    } else {
-      // Fallback: still show thank you (form data logged in console for manual follow-up)
-      console.log('Form data:', { name, company, email, phone: code + ' ' + phone });
-      document.getElementById('form-area').classList.add('hidden');
-      document.getElementById('thank-you').classList.add('show');
-    }
-  })
-  .catch(() => {
-    // Offline fallback: show thank you anyway, log data
-    console.log('Form data:', { name, company, email, phone: code + ' ' + phone });
-    document.getElementById('form-area').classList.add('hidden');
-    document.getElementById('thank-you').classList.add('show');
-  });
-}
-</script>
 
 </body>
 </html>
