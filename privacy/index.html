@@ -10,9 +10,8 @@
     --soft:#5f5f5f;
     --faint:#8a8a8a;
     --line:#e8e6e1;
-    --bg:#faf9f6;
-    --card:#ffffff;
-    --accent:#1a1a1a;
+    --bg:#ffffff;
+    --card:#faf9f6;
   }
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
@@ -27,8 +26,8 @@
   }
   .wrap{max-width:720px;margin:0 auto;padding:72px 24px 96px;}
   .brand{
-    font-size:15px;letter-spacing:0.35em;font-weight:600;
-    text-transform:uppercase;color:var(--ink);
+    display:block;
+    height:24px;width:auto;
     margin:0 0 56px;
   }
   h1{
@@ -45,6 +44,7 @@
   li{margin:0 0 8px;}
   a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
   strong{font-weight:600;}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.9em;color:var(--soft);}
   .lead{font-size:18px;color:var(--soft);margin-bottom:8px;}
   .callout{
     background:var(--card);
@@ -66,7 +66,19 @@
 <body>
 <div class="wrap">
 
-  <p class="brand">AIDA</p>
+  <!-- AIDA wordmark, drawn as vector so no image file is needed -->
+  <svg class="brand" viewBox="0 0 275 80" role="img" aria-label="AIDA" xmlns="http://www.w3.org/2000/svg"
+       fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- A -->
+    <path d="M15 70 L35 10 L55 70"/>
+    <!-- I -->
+    <path d="M95 10 L95 70"/>
+    <!-- D -->
+    <path d="M135 10 L135 70"/>
+    <path d="M135 10 C162 10 178 25 178 40 C178 55 162 70 135 70"/>
+    <!-- A -->
+    <path d="M220 70 L240 10 L260 70"/>
+  </svg>
 
   <h1>Privacy Policy</h1>
   <p class="meta">Last updated: 10 July 2026</p>
