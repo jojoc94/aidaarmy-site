@@ -101,18 +101,19 @@ h1.big .hl{display:block}
 .tick-list li{position:absolute;inset:0;display:flex;align-items:center;gap:12px;font-size:15.5px;color:var(--ink);opacity:0;transform:translateY(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s ease}
 .tick-list li.on{opacity:1;transform:none}
 .tick-list li.off{opacity:0;transform:translateY(-100%)}
-.tick-list .mono{width:34px;height:34px;flex:0 0 34px}
+.tick-list .char{width:50px;height:50px;flex:0 0 50px}
 .tick-list .t{flex:1;line-height:1.3}
 .tick-list .w{font-size:13px;color:var(--muted);white-space:nowrap}
 .ticker.static .tick-list{height:auto}
 .ticker.static .tick-list li{position:static;opacity:1;transform:none;padding:9px 0}
 .cap{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
 .team{padding-top:24px}
-.deck{display:flex;justify-content:center;gap:16px;margin-top:44px;min-height:300px;perspective:1200px}
+.deck{display:flex;justify-content:center;gap:16px;margin-top:44px;perspective:1200px}
 .idc{--r:0deg;--x:0px;flex:0 0 156px;background:var(--clay-2);border:1px solid var(--line);border-radius:18px;padding:30px 16px 16px;position:relative;
   box-shadow:0 14px 30px -20px rgba(20,26,77,.5);transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;transform:translateX(var(--x)) rotate(var(--r))}
 .idc::before{content:"";position:absolute;top:11px;left:50%;width:34px;height:8px;margin-left:-17px;border-radius:5px;background:var(--clay-3);box-shadow:inset 0 1px 2px rgba(20,26,77,.25)}
-.idc .mono{width:56px;height:56px;margin-bottom:14px}
+.idc .char{width:84px;height:84px;margin:-8px auto 4px}
+.idc .quip{display:block;font-size:12.5px;font-style:italic;color:var(--ink);margin-top:7px;line-height:1.35}
 .idc b{display:block;font-size:17px;letter-spacing:-.01em;line-height:1.2}
 .idc .role{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
 .idc .duty{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--ink);margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
@@ -252,7 +253,28 @@ footer .logo-w{height:18px;width:auto}
   </div>
 </div></header>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="mono-lana" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#2B3BD6"/><path d="M33 3a12 12 0 0 1 12 12H33z" fill="#FF7A1F"/><text x="24" y="30.5" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">L</text></symbol><symbol id="mono-rex" viewBox="0 0 48 48"><rect x="3" y="3" width="42" height="42" rx="11" fill="#2B3BD6"/><rect x="3" y="37" width="42" height="8" rx="4" fill="#FF7A1F"/><text x="24" y="29" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">R</text></symbol><symbol id="mono-kai" viewBox="0 0 48 48"><path d="M3 45V24A21 21 0 0 1 24 3h21v21A21 21 0 0 1 24 45z" fill="#2B3BD6"/><rect x="35" y="35" width="10" height="10" rx="2" fill="#FF7A1F"/><text x="24" y="30.5" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">K</text></symbol><symbol id="mono-mila" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="#2B3BD6"/><path d="M14 6.5A21 21 0 0 0 14 41.5" stroke="#FF7A1F" stroke-width="5" fill="none" stroke-linecap="round"/><text x="24" y="30.5" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">M</text></symbol><symbol id="mono-max" viewBox="0 0 48 48"><rect x="3" y="3" width="42" height="42" rx="6" fill="#2B3BD6"/><path d="M16 3a8 8 0 0 0 16 0z" fill="#FF7A1F"/><text x="24" y="32" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">M</text></symbol><symbol id="mono-fin" viewBox="0 0 48 48"><rect x="3" y="3" width="42" height="42" rx="21" fill="#2B3BD6"/><path d="M33 4.5 43.5 15 15 43.5 4.5 33z" fill="#FF7A1F" opacity=".95"/><text x="24" y="30.5" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">F</text></symbol><symbol id="mono-hana" viewBox="0 0 48 48"><path d="M3 24a21 21 0 0 1 42 0v21H3z" fill="#2B3BD6"/><rect x="3" y="21" width="42" height="5" fill="#FF7A1F"/><text x="24" y="39" text-anchor="middle" font-family="Geist,system-ui,sans-serif" font-weight="700" font-size="19" fill="#F4ECE3">H</text></symbol></defs></svg>
+<style>
+.char{display:block;overflow:visible}
+.char .ch-bob{animation:chBob 3.2s ease-in-out infinite;animation-delay:var(--d,0s)}
+.char .ch-eyes{transform-box:fill-box;transform-origin:center;animation:chBlink 5.2s infinite;animation-delay:calc(var(--d,0s) * 3)}
+.char .ch-wave{transform-box:view-box;transform-origin:24px 52px}
+.char .pr-wiggle,.char .pr-tilt{transform-box:fill-box;transform-origin:center;animation:chWiggle 2.6s ease-in-out infinite}
+.char .pr-search{animation:chSearch 3.4s ease-in-out infinite}
+.char .pr-glide{animation:chGlide 2.8s ease-in-out infinite}
+.char .pr-write{transform-box:fill-box;transform-origin:20% 90%;animation:chWrite 1.3s ease-in-out infinite}
+.char .pr-steam{animation:chSteam 2.2s ease-out infinite}
+.char .pr-bounce{animation:chBounce 1.6s cubic-bezier(.3,0,.3,1) infinite}
+.wave-on:hover .char .ch-wave,.char.wave-on:hover .ch-wave{animation:chWave 1s ease-in-out 2}
+@keyframes chBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.6px)}}
+@keyframes chBlink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+@keyframes chWiggle{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes chSearch{0%,100%{transform:translate(0,0)}33%{transform:translate(-2px,1.5px)}66%{transform:translate(1.5px,-1px)}}
+@keyframes chGlide{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(3px,-3.5px) rotate(-4deg)}}
+@keyframes chWrite{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(5deg)}}
+@keyframes chSteam{0%{opacity:0;transform:translateY(2px)}40%{opacity:1}100%{opacity:0;transform:translateY(-4px)}}
+@keyframes chBounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-3.5px)}60%{transform:translateY(-3.5px)}}
+@keyframes chWave{0%,100%{transform:rotate(0)}25%,75%{transform:rotate(-95deg)}50%{transform:rotate(-65deg)}}
+</style>
 <main id="main">
 
 <section class="hero">
@@ -271,11 +293,86 @@ footer .logo-w{height:18px;width:auto}
       <div class="ticker" id="ticker" role="img" aria-label="Illustrative activity: Lana replied to a new enquiry; Kai followed up 4 quotes; Max sent the morning brief; Hana answered a leave question; Fin flagged 2 unpaid invoices.">
         <div class="ticker-h" aria-hidden="true"><span class="live"><span class="dot"></span>Now</span><span>AI employees</span></div>
         <ul class="tick-list" aria-hidden="true">
-          <li><svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-lana"/></svg><span class="t">Lana replied to a new enquiry</span><span class="w">2 min</span></li>
-          <li><svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-kai"/></svg><span class="t">Kai followed up 4 quotes</span><span class="w">9:02 am</span></li>
-          <li><svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-max"/></svg><span class="t">Max sent the morning brief</span><span class="w">8:00 am</span></li>
-          <li><svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-hana"/></svg><span class="t">Hana answered a leave question</span><span class="w">1 min</span></li>
-          <li><svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-fin"/></svg><span class="t">Fin flagged 2 unpaid invoices</span><span class="w">10:15 am</span></li>
+          <li><svg class="char " viewBox="0 0 90 90" width="50" height="50" style="--d:0s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#1F2BA8" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62" cy="57" rx="6.5" ry="4.4" transform="rotate(-25 62 57)" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 46C20 27 30 18 43 18C56 18 64 27 64 43C64 62 57 76 42 76C27 76 20 64 20 46Z" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-wiggle"><rect x="62" y="44" width="18" height="13" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M62.8 45.2 71 51.4 79.2 45.2" fill="none" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M71 56c-1.7-1.3-3.2-2.3-3.2-3.7 0-1 .8-1.6 1.6-1.6.7 0 1.2.3 1.6.9.4-.6.9-.9 1.6-.9.8 0 1.6.6 1.6 1.6 0 1.4-1.5 2.4-3.2 3.7z" fill="#F27BB5" stroke="#141A4D" stroke-width=".8"/></g>
+<circle cx="65" cy="57" r="4.6" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><span class="t">Lana replied to a new enquiry</span><span class="w">2 min</span></li>
+          <li><svg class="char " viewBox="0 0 90 90" width="50" height="50" style="--d:0.4s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#D8600F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="61" cy="47" rx="6.5" ry="4.4" transform="rotate(-25 61 47)" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37 19H47C58 19 64 25 64 36V60C64 70 58 76 47 76H37C26 76 20 70 20 60V36C20 25 26 19 37 19Z" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-glide"><path d="M61 41 84 31 75 51 70.5 44Z" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M70.5 44 84 31" fill="none" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="64" cy="47" r="4.6" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><span class="t">Kai followed up 4 quotes</span><span class="w">9:02 am</span></li>
+          <li><svg class="char " viewBox="0 0 90 90" width="50" height="50" style="--d:0.8s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#532F70" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62" cy="57.5" rx="6.5" ry="4.4" transform="rotate(-25 62 57.5)" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 16C56 16 64 32 64 48C64 66 55 76 42 76C29 76 20 66 20 48C20 32 28 16 42 16Z" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><circle cx="35" cy="41" r="3.2" fill="#141A4D"/><circle cx="49" cy="41" r="3.2" fill="#141A4D"/><circle cx="36.2" cy="39.8" r="1.1" fill="#fff"/><circle cx="50.2" cy="39.8" r="1.1" fill="#fff"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+<path d="M42 55.5l-2.6 2.2 1.6 7.6 1 1.2 1-1.2 1.6-7.6z" fill="#2B3BD6" stroke="#141A4D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.5 55L42 65L50.5 55" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="64" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="66.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="70.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop"><rect x="63" y="48" width="13" height="13" rx="2.6" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M76 51q5 0 5 3.4t-5 3.4" fill="none" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><g class="pr-steam"><path d="M67 45q-2-2.5 0-5t0-5" fill="none" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" opacity=".55"/><path d="M72 45q-2-2.5 0-5t0-5" fill="none" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></g></g>
+<circle cx="65" cy="57.5" r="4.6" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><span class="t">Max sent the morning brief</span><span class="w">8:00 am</span></li>
+          <li><svg class="char " viewBox="0 0 90 90" width="50" height="50" style="--d:1.2000000000000002s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#22827A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#2FA39A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="61.5" cy="57.5" rx="6.5" ry="4.4" transform="rotate(-25 61.5 57.5)" fill="#2FA39A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 17C50 17 66 50 64 63C62 74 22 74 20 63C18 50 34 17 42 17Z" fill="#2FA39A" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-tilt"><rect x="61" y="40" width="17" height="22" rx="2.6" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="66" y="37.4" width="7" height="4.6" rx="1.6" fill="#141A4D"/><path d="M69.5 54.5c-2-1.5-3.7-2.7-3.7-4.3 0-1.1.9-1.9 1.9-1.9.8 0 1.4.4 1.8 1 .4-.6 1-1 1.8-1 1 0 1.9.8 1.9 1.9 0 1.6-1.7 2.8-3.7 4.3z" fill="#F27BB5" stroke="#141A4D" stroke-width=".8"/><path d="M65 58h9" stroke="#141A4D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="64.5" cy="57.5" r="4.6" fill="#2FA39A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><span class="t">Hana answered a leave question</span><span class="w">1 min</span></li>
+          <li><svg class="char " viewBox="0 0 90 90" width="50" height="50" style="--d:1.6s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#C9941F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#E8B23A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62" cy="58" rx="6.5" ry="4.4" transform="rotate(-25 62 58)" fill="#E8B23A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 20C57 20 66 31 66 47C66 64 56 76 42 76C28 76 18 64 18 47C18 31 27 20 42 20Z" fill="#E8B23A" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-bounce"><path d="M64 60v2.6a8 3 0 0 0 16 0V60" fill="#FFE08A" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="60" rx="8" ry="3" fill="#FFE9A8" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 55v2.6a8 3 0 0 0 16 0V55" fill="#FFE08A" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="55" rx="8" ry="3" fill="#FFE9A8" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 50v2.6a8 3 0 0 0 16 0V50" fill="#FFE08A" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="50" rx="8" ry="3" fill="#FFE9A8" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="80" cy="42.5" r="5" fill="#6BAF6E" stroke="#141A4D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M77.8 42.6l1.6 1.6 3-3.2" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="65" cy="58" r="4.6" fill="#E8B23A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><span class="t">Fin flagged 2 unpaid invoices</span><span class="w">10:15 am</span></li>
         </ul>
       </div>
       <figcaption class="cap">Illustrative.</figcaption>
@@ -286,38 +383,150 @@ footer .logo-w{height:18px;width:auto}
 <section class="sec team" id="team" aria-labelledby="team-h"><div class="wrap center">
   <h2 class="h2 reveal" id="team-h">Your new team <span class="hl">never sleeps.</span></h2>
   <div class="deck" id="deck">
-    <article class="idc" style="--x:354px;--r:-15.0deg;z-index:7">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-lana"/></svg><b>Lana</b><span class="role">Lead capture</span>
+    <article class="idc wave-on" style="--x:354px;--r:-15.0deg;z-index:7">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:0s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#1F2BA8" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62" cy="57" rx="6.5" ry="4.4" transform="rotate(-25 62 57)" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 46C20 27 30 18 43 18C56 18 64 27 64 43C64 62 57 76 42 76C27 76 20 64 20 46Z" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-wiggle"><rect x="62" y="44" width="18" height="13" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M62.8 45.2 71 51.4 79.2 45.2" fill="none" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M71 56c-1.7-1.3-3.2-2.3-3.2-3.7 0-1 .8-1.6 1.6-1.6.7 0 1.2.3 1.6.9.4-.6.9-.9 1.6-.9.8 0 1.6.6 1.6 1.6 0 1.4-1.5 2.4-3.2 3.7z" fill="#F27BB5" stroke="#141A4D" stroke-width=".8"/></g>
+<circle cx="65" cy="57" r="4.6" fill="#2B3BD6" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Lana</b><span class="role">Lead capture</span>
+      <span class="quip">&ldquo;Never misses a hello.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 12 enquiries replied</div>
     </article>
-    <article class="idc" style="--x:236px;--r:-10.0deg;z-index:8">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-rex"/></svg><b>Rex</b><span class="role">Lead research</span>
+    <article class="idc wave-on" style="--x:236px;--r:-10.0deg;z-index:8">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:0.37s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#4E8F52" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#6BAF6E" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62.5" cy="58.5" rx="6.5" ry="4.4" transform="rotate(-25 62.5 58.5)" fill="#6BAF6E" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 18C53 18 57 29 57 36C63 44 66 55 63 64C60 74 24 74 21 64C18 55 21 44 27 36C27 29 31 18 42 18Z" fill="#6BAF6E" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><circle cx="35" cy="41" r="3.2" fill="#141A4D"/><circle cx="49" cy="41" r="3.2" fill="#141A4D"/><circle cx="36.2" cy="39.8" r="1.1" fill="#fff"/><circle cx="50.2" cy="39.8" r="1.1" fill="#fff"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-search"><path d="M66 59 71.5 52" fill="none" stroke="#141A4D" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74.5" cy="46.5" r="7.2" fill="#E6F1E6" stroke="#141A4D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M71 44.8q1.8-2.6 5-1.8" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></g>
+<circle cx="65.5" cy="58.5" r="4.6" fill="#6BAF6E" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Rex</b><span class="role">Lead research</span>
+      <span class="quip">&ldquo;Loves a good deep dive.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 30 leads researched</div>
     </article>
-    <article class="idc" style="--x:118px;--r:-5.0deg;z-index:9">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-kai"/></svg><b>Kai</b><span class="role">Outreach</span>
+    <article class="idc wave-on" style="--x:118px;--r:-5.0deg;z-index:9">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:0.74s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#D8600F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="61" cy="47" rx="6.5" ry="4.4" transform="rotate(-25 61 47)" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37 19H47C58 19 64 25 64 36V60C64 70 58 76 47 76H37C26 76 20 70 20 60V36C20 25 26 19 37 19Z" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-glide"><path d="M61 41 84 31 75 51 70.5 44Z" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M70.5 44 84 31" fill="none" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="64" cy="47" r="4.6" fill="#FF7A1F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Kai</b><span class="role">Outreach</span>
+      <span class="quip">&ldquo;Follows up so you don’t have to.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 18 follow-ups sent</div>
     </article>
-    <article class="idc" style="--x:0px;--r:0.0deg;z-index:10">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-mila"/></svg><b>Mila</b><span class="role">Proposals</span>
+    <article class="idc wave-on" style="--x:0px;--r:0.0deg;z-index:10">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:1.11s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#D95C9A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#F27BB5" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="61.5" cy="57" rx="6.5" ry="4.4" transform="rotate(-25 61.5 57)" fill="#F27BB5" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 73V47C20 29 30 18 42 18C54 18 64 29 64 47V73Q64 76 61 76H23Q20 76 20 73Z" fill="#F27BB5" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><circle cx="35" cy="41" r="3.2" fill="#141A4D"/><circle cx="49" cy="41" r="3.2" fill="#141A4D"/><circle cx="36.2" cy="39.8" r="1.1" fill="#fff"/><circle cx="50.2" cy="39.8" r="1.1" fill="#fff"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop"><rect x="61" y="39" width="16" height="20" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M69 42.5l1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3-2.2-2.1 3-.4z" fill="#E8B23A" stroke="#141A4D" stroke-width=".8" stroke-linejoin="round"/><path d="M64 53.5h10M64 56.5h7" stroke="#141A4D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><g class="pr-write"><path d="M74 63 83 47.5 86.5 49.5 77.5 65 73.5 66Z" fill="#FF7A1F" stroke="#141A4D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M81.5 51.5 85 53.5" stroke="#141A4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+<circle cx="64.5" cy="57" r="4.6" fill="#F27BB5" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Mila</b><span class="role">Proposals</span>
+      <span class="quip">&ldquo;Writes proposals before your coffee.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 4 proposals drafted</div>
     </article>
-    <article class="idc" style="--x:-118px;--r:5.0deg;z-index:9">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-max"/></svg><b>Max</b><span class="role">Sales manager</span>
+    <article class="idc wave-on" style="--x:-118px;--r:5.0deg;z-index:9">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:1.48s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#532F70" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62" cy="57.5" rx="6.5" ry="4.4" transform="rotate(-25 62 57.5)" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 16C56 16 64 32 64 48C64 66 55 76 42 76C29 76 20 66 20 48C20 32 28 16 42 16Z" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><circle cx="35" cy="41" r="3.2" fill="#141A4D"/><circle cx="49" cy="41" r="3.2" fill="#141A4D"/><circle cx="36.2" cy="39.8" r="1.1" fill="#fff"/><circle cx="50.2" cy="39.8" r="1.1" fill="#fff"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+<path d="M42 55.5l-2.6 2.2 1.6 7.6 1 1.2 1-1.2 1.6-7.6z" fill="#2B3BD6" stroke="#141A4D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.5 55L42 65L50.5 55" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="64" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="66.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="70.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop"><rect x="63" y="48" width="13" height="13" rx="2.6" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M76 51q5 0 5 3.4t-5 3.4" fill="none" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><g class="pr-steam"><path d="M67 45q-2-2.5 0-5t0-5" fill="none" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" opacity=".55"/><path d="M72 45q-2-2.5 0-5t0-5" fill="none" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></g></g>
+<circle cx="65" cy="57.5" r="4.6" fill="#6B3F8F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Max</b><span class="role">Sales manager</span>
+      <span class="quip">&ldquo;Your 8am briefing buddy.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 1 morning brief sent</div>
     </article>
-    <article class="idc" style="--x:-236px;--r:10.0deg;z-index:8">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-fin"/></svg><b>Fin</b><span class="role">Finance</span>
+    <article class="idc wave-on" style="--x:-236px;--r:10.0deg;z-index:8">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:1.85s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#C9941F" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#E8B23A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="62" cy="58" rx="6.5" ry="4.4" transform="rotate(-25 62 58)" fill="#E8B23A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 20C57 20 66 31 66 47C66 64 56 76 42 76C28 76 18 64 18 47C18 31 27 20 42 20Z" fill="#E8B23A" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-bounce"><path d="M64 60v2.6a8 3 0 0 0 16 0V60" fill="#FFE08A" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="60" rx="8" ry="3" fill="#FFE9A8" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 55v2.6a8 3 0 0 0 16 0V55" fill="#FFE08A" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="55" rx="8" ry="3" fill="#FFE9A8" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 50v2.6a8 3 0 0 0 16 0V50" fill="#FFE08A" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="72" cy="50" rx="8" ry="3" fill="#FFE9A8" stroke="#141A4D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="80" cy="42.5" r="5" fill="#6BAF6E" stroke="#141A4D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M77.8 42.6l1.6 1.6 3-3.2" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="65" cy="58" r="4.6" fill="#E8B23A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Fin</b><span class="role">Finance</span>
+      <span class="quip">&ldquo;Chases invoices, politely.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 6 invoices raised</div>
     </article>
-    <article class="idc" style="--x:-354px;--r:15.0deg;z-index:7">
-      <svg class="mono" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mono-hana"/></svg><b>Hana</b><span class="role">HR</span>
+    <article class="idc wave-on" style="--x:-354px;--r:15.0deg;z-index:7">
+      <svg class="char " viewBox="0 0 90 90" width="84" height="84" style="--d:2.22s" aria-hidden="true" focusable="false">
+<g class="ch-bob">
+<g fill="#22827A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="33" cy="80" rx="7" ry="4.2"/><ellipse cx="51" cy="80" rx="7" ry="4.2"/></g>
+<g class="ch-wave"><ellipse cx="17.5" cy="55" rx="7" ry="4.6" transform="rotate(28 17.5 55)" fill="#2FA39A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<ellipse cx="61.5" cy="57.5" rx="6.5" ry="4.4" transform="rotate(-25 61.5 57.5)" fill="#2FA39A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 17C50 17 66 50 64 63C62 74 22 74 20 63C18 50 34 17 42 17Z" fill="#2FA39A" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="42" cy="43.5" rx="14.5" ry="11" fill="#FBF7F2"/>
+<g class="ch-eyes"><path d="M31.8 42q3.2-4.6 6.4 0M45.8 42q3.2-4.6 6.4 0" fill="none" stroke="#141A4D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M37.6 47.6q4.4 4.2 8.8 0" fill="none" stroke="#141A4D" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="32.6" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/><ellipse cx="51.4" cy="47.2" rx="3.2" ry="1.9" fill="#FFA3CF" opacity=".9"/>
+
+<path d="M33.5 54.5L42 62L50.5 54.5" fill="none" stroke="#FF7A1F" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="36.5" y="61" width="11" height="11.5" rx="2" fill="#FBF7F2" stroke="#141A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="38.5" y="63.4" width="7" height="2.4" rx="1" fill="#2B3BD6"/><rect x="38.5" y="67.4" width="5" height="1.5" rx=".75" fill="#141A4D" opacity=".55"/>
+<g class="ch-prop pr-tilt"><rect x="61" y="40" width="17" height="22" rx="2.6" fill="#FBF7F2" stroke="#141A4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="66" y="37.4" width="7" height="4.6" rx="1.6" fill="#141A4D"/><path d="M69.5 54.5c-2-1.5-3.7-2.7-3.7-4.3 0-1.1.9-1.9 1.9-1.9.8 0 1.4.4 1.8 1 .4-.6 1-1 1.8-1 1 0 1.9.8 1.9 1.9 0 1.6-1.7 2.8-3.7 4.3z" fill="#F27BB5" stroke="#141A4D" stroke-width=".8"/><path d="M65 58h9" stroke="#141A4D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="64.5" cy="57.5" r="4.6" fill="#2FA39A" stroke="#141A4D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg><b>Hana</b><span class="role">HR</span>
+      <span class="quip">&ldquo;Answers the same question, happily.&rdquo;</span>
       <div class="duty"><span class="dot" aria-hidden="true"></span>On duty &middot; 24/7</div>
       <div class="today">Today: 9 staff questions answered</div>
     </article>
